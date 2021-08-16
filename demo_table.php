@@ -45,7 +45,10 @@ $result = $conn->query($select_query);
 if ($result->num_rows > 0) {
   // output data of each row
   while($row = $result->fetch_assoc()) {
-    echo "\nStudent name: " . $row["studentname"]. "\nSubject: " . $row["subject"]. "\nProfessor Name: " . $row["professor"];
+    echo "Data inside Students\n";
+    echo "------------------------------------------";
+    echo "\nStudent name: " . $row["studentname"]. "\nSubject: " . $row["subject"]. "\nProfessor Name: " . $row["professor"] . "\n";
+    echo "------------------------------------------\n";
   }
 } else {
   echo "0 results";
