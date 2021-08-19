@@ -1,0 +1,39 @@
+pipeline {
+    agent any
+    
+    options {
+        // This is required if you want to clean before build
+        skipDefaultCheckout(true)
+    }
+
+    // tools {
+    //     // Install the Maven version configured as "M3" and add it to the path.
+    //     maven "M3"
+    // }
+
+    stages {
+        stage('Cloning') {
+            steps {
+                // Clean before build
+                cleanWs()
+                
+                // Get some code from a GitHub repository
+                //git 'git@github.com:priyacshah/php_automation.git'
+                git( branch: 'main',
+                credentialsId: '1e3ec32c-cf76-49d0-b883-8ca486141768',
+                url: 'git@github.com:priyacshah/php_automation.git')
+                // Run php on a linux server.
+                
+
+            }
+            
+
+        
+        }
+        stage('Running PHP Script'){
+            steps{
+                sh "php demo_table.php"
+            }
+        }
+    }
+}
